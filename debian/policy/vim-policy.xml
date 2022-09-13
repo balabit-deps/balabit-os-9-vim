@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"/usr/share/sgml/docbook/dtd/xml/4.3/docbookx.dtd" [
+  <!ENTITY vim-version "8.2">
+  <!ENTITY vim "<application>Vim</application>">
+  <!ENTITY debian "Debian">
+
+  <!ENTITY authors SYSTEM "authors.xml">
+  <!ENTITY legal SYSTEM "legal.xml">
+]>
+
+<article>
+  <articleinfo>
+    <title>Debian Packaging Policy for &vim;</title>
+    <releaseinfo>Version 2.0</releaseinfo>
+    &authors;
+    &legal;
+  </articleinfo>
+
+  <section id="nutshell">
+    <title>&vim; Addon Packaging in a Nutshell</title>
+
+    <warning> <para> This section contains a brief howto of what to do to
+	package a &vim; addon (plugin, syntax definition, ...) in &debian;.
+	This section is not the full policy nor the guidelines for doing that;
+	have a look at the remainder of this document for such information.
+    </para> </warning>
+
+    <para> So you've found on <ulink url="https://www.vim.org">vim.org</ulink> a
+      cool extra feature for your beloved editor (&vim;) and you want it to be
+      packaged in &debian;. It's as easy as implementing the following 4 steps:
+
+      <orderedlist numeration="arabic">
+
+	<listitem> <para> create an <code>architecture: all</code>
+	    <filename>.deb</filename> binary package called
+	    <application>vim-<replaceable>ADDON</replaceable></application>,
+	    where <replaceable>ADDON</replaceable> is the addon name. See <xref
+	      linkend="addon-packages" /> for more info on this. </para>
+	</listitem>
+
+	<listitem> <para> make your package ship all the files composing your
+	    addon (usually <filename>.vim</filename> and
+	    <filename>.txt</filename> files) under
+	    <filename>/usr/share/vim-<replaceable>ADDON</replaceable>/</filename>. The files should be
+	    shipped as a file and directory tree isomorphic to what you want to
+	    see in a runtime &vim; directory. So if for example the addon
+	    documentation says that something should be installed as
+	    <filename>plugin/foo.vim</filename> then you should ship it as
+	    <filename>/usr/share/vim-<replaceable>ADDON</replaceable>/plugin/foo.vim</filename>. See <xref
+	      linkend="addon-structure" /> for more info on this. </para>
+	</listitem>
+
+	<listitem> <para>create a
+	  <filename>debian/vim-<replaceable>ADDON</replaceable>.vim-addon</filename>
+	    specifying the files and/or directories making up the addon.  If neovim is also supported, create
+	    a corresponding <filename>debian/vim-<replaceable>ADDON</replaceable>.neovim-addon</filename>
+	    for it, or a symlink if the same set of files are used.
+
+	    See the <command>dh_vim-addon</command> manual page, in the <application>dh-vim-addon</application>
+	    package, for more details. </para> </listitem>
+
+	<listitem> <para>add <code>Depends: ${vim-addon:Depends}</code> to the binary package stanzas.</para> </listitem>
+
+      </orderedlist>
+
+      That's it! Easy, isn't it?  </para>
+
+  </section>
+
+  <section id="legacy-packaging">
+    <title>&vim; Packaging</title>
+
+    <para> Here you can find a brief overview of how the &vim; editor is
+      packaged in &debian; and a few concepts useful later; if you are
+      just interested in the guidelines for packaging addons skip to
+      <xref linkend="addon-packaging" />. </para>
+
+    <para> The &vim; editor is split in &debian; as several binary
+      packages. The key splitting is according to variants, a &vim;
+      <emphasis>variant</emphasis> is a particular version of the
+      <filename>/usr/bin/vim</filename> executable built with a given
+      set of (<application>configure</application>) option. Examples of
+      variants provided in &debian; are: <ulink
+	url="https://packages.debian.org/unstable/editors/vim-tiny"><application>vim-tiny</application></ulink>,
+      <ulink
+	url="https://packages.debian.org/unstable/editors/vim"><application>vim</application></ulink>,
+      <ulink
+	url="https://packages.debian.org/unstable/editors/vim-nox"><application>vim-nox</application></ulink>,
+      <ulink
+	url="https://packages.debian.org/unstable/editors/vim-gtk3"><application>vim-gtk3</application></ulink>.
+      Have a look at their full descriptions for their characteristics.
+      The actual <filename>/usr/bin/vim</filename> file is managed via
+      the alternative mechanism and point to one of the variants.
+    </para>
+
+    <para> Another relevant binary package is <ulink
+	url="https://packages.debian.org/unstable/editors/vim-runtime"><application>vim-runtime</application></ulink>
+      which ships the &vim; runtime environment distributed upstream together
+      with the editor. Almost all third party extensions to &vim; come as
+      additional pieces of this runtime environment, how to package them is the
+      main topic of this document. </para>
+
+    <para> To be working properly extensions should be located somewhere where
+      &vim; can find them. This "somewhere" is expressed in &vim; as a list of
+      directories to be looked for in turn when looking for extensions. Such a
+      list is the <emphasis>&vim; runtime path</emphasis>, and is kept in the
+      &vim; global variable <envar>runtimepath</envar>; you can inspect it
+      executing <command>:set runtimepath?</command> inside &vim;. See <ulink
+	url="https://vimhelp.org/options.txt.html#'runtimepath'"><command>:help
+	  'runtimepath'</command></ulink> in the &vim; online help for more
+      information, including the relevant subdirectories which &vim; will look
+      for inside <emphasis>each</emphasis> component of the runtime path.
+    </para>
+
+    <para> &vim; also has a concept of <emphasis>packages</emphasis>.  A package
+      must follow a specific directory structure and be located in one of the
+      directories defined in the <envar>packpath</envar> option.  Within each
+      package, there are two relevant directories: <variablelist>
+
+	<varlistentry><term><emphasis>start</emphasis></term>
+	  <listitem><para>All addons in this directory will automatically
+	    be added to <envar>runtimepath</envar> and loaded like any other
+	    addon that comes with &vim;. These are called
+	    <emphasis>automatic</emphasis> addons.</para> </listitem> </varlistentry>
+
+	<varlistentry><term><emphasis>opt</emphasis></term>
+	  <listitem><para>Any addons in this directory must explicitly
+	    be enabled by executing <command>:packadd! <replaceable>ADDON</replaceable></command>
+	    in the user's vimrc. These are called <emphasis>optional</emphasis> addons.
+	    </para> </listitem> </varlistentry>
+      </variablelist> </para>
+  </section>
+
+  <section id="addon-packaging">
+    <title>Packaging of &vim; Addons</title>
+
+    <para> With the term (&vim;) <emphasis>addon</emphasis> we refer to an
+      extension for the &vim; editor which is not shipped with the editor
+      itself. Examples of addons which can be frequently found on the Internet
+      are color schemes, syntax and corresponding higlighting definitions for
+      new languages, indentation definitions, generic and filetype-specific
+      plugins, ... </para>
+
+    <section id="addon-structure">
+      <title>Addon Structure</title>
+
+      <para> An addon is usually composed of a set of <filename>.vim</filename>
+	files; other kind of files, for example <filename>.txt</filename> files
+	for documentation purposes, can be provided as well.
+
+	For instance, the following files compose the <ulink
+	  url="https://www.vim.org/scripts/script.php?script_id=90"><application>vcscommand</application></ulink>
+	addon, providing plugins, syntax higlighting definitions, and
+	documentation:
+
+	<example> <title>Files composing the
+	    <application>vcscommand</application> addon</title>
+	  <programlisting>doc/tags
+doc/vcscommand.txt
+plugin/vcsbzr.vim
+plugin/vcscommand.vim
+plugin/vcscvs.vim
+plugin/vcsgit.vim
+plugin/vcshg.vim
+plugin/vcssvk.vim
+plugin/vcssvn.vim
+syntax/cvsannotate.vim
+syntax/gitannotate.vim
+syntax/hgannotate.vim
+syntax/svkannotate.vim
+syntax/svnannotate.vim
+syntax/vcscommit.vim</programlisting>
+	</example>
+
+      </para>
+
+      <para> For an addon to work properly (and its plugins being automatically
+	loaded by &vim;) all its files should be installed under a unique directory
+	which will be added to &vim;'s pack path. In the example above, if
+	<filename>/usr/share/vim-vcscommand/</filename> is the chosen directory,
+	then <filename>SVNAnnotate.vim</filename> should be installed as
+	<filename>/usr/share/vim-vcscommand/syntax/SVNAnnotate.vim</filename>,
+	<filename>vcssvn.vim</filename> as
+	<filename>/usr/share/vim-vcscommand/plugin/vcssvn.vim</filename>, and so
+	on. </para>
+
+    </section>
+
+    <section id="addon-packages">
+      <title>Addon Packages</title>
+
+      <para> Each addon should be packaged and distributed in &debian;
+	as a separate package.  It is recommended that the package is
+	named according to the naming convention
+	<application>vim-<replaceable>ADDON</replaceable> </application>
+	where <replaceable>ADDON</replaceable> is a name identifying the
+	  packaged addon. </para>
+
+      <para> Each binary package should contain a single addon installed as an
+	<emphasis>automatic</emphasis> addon.  If the addon requires
+	heavy customization or is noticeably intrusive, it may be preferable
+	to install it as an <emphasis>optional</emphasis> addon.</para>
+
+      <para> In some cases, it may make sense to aggregate multiple &vim; addons in
+	a single &debian; package. An example of such a suite is distributed as
+	the <ulink url="https://packages.qa.debian.org/vim-scripts">
+	<application>vim-scripts</application> package</ulink>.
+
+	In such cases, the addons should be installed as <emphasis>optional</emphasis>
+	addons so the user can choose which ones to enable. </para>
+
+    </section>
+  </section>
+
+  <section id="tools">
+    <title>Tools</title>
+
+    <para> <command>dh_vim-addons</command> is the tool used by maintainers
+      to install &vim; addons into the appropriate runtime path. It is shipped in the <ulink
+	url="https://packages.qa.debian.org/dh-vim-addon"><application>dh-vim-addon</application></ulink>
+	  package. It will ensure that the addons are installed in to the correct
+	  <envar>packpath</envar>, based on whether it is an <emphasis>automatic</emphasis>
+	  or <emphasis>optional</emphasis> addon, and which editors are supported. </para>
+
+  </section>
+
+</article>

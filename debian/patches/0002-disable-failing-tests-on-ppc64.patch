@@ -1,0 +1,51 @@
+Description: Disable some tests on ppc64el
+ A few of the build time tests were running into an ENOMEM issue on ppc64el.
+ This patch skips the tests on ppc64el only.
+Author: William 'jawn-smith' Wilson <jawn-smith@ubuntu.com>
+Last-Update: 2022-04-18
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: vim-8.2.3995/src/testdir/test_crypt.vim
+===================================================================
+--- vim-8.2.3995.orig/src/testdir/test_crypt.vim
++++ vim-8.2.3995/src/testdir/test_crypt.vim
+@@ -68,6 +68,9 @@
+ endfunc
+ 
+ func Test_crypt_sodium()
++  if system("uname -m") == "ppc64le\n"
++    throw 'Skipped: not enough memory on ppc64le'
++  endif
+   CheckFeature sodium
+   call Crypt_uncrypt('xchacha20')
+ endfunc
+@@ -133,6 +136,9 @@
+ endfunc
+ 
+ func Test_uncrypt_xchacha20_invalid()
++  if system("uname -m") == "ppc64le\n"
++    throw 'Skipped: not enough memory on ppc64le'
++  endif
+   CheckFeature sodium
+ 
+   " load an invalid encrypted file and verify it can be decrypted with an
+@@ -152,6 +158,9 @@
+ endfunc
+ 
+ func Test_uncrypt_xchacha20_2()
++  if system("uname -m") == "ppc64le\n"
++    throw 'Skipped: not enough memory on ppc64le'
++  endif
+   CheckFeature sodium
+ 
+   sp Xcrypt_sodium.txt
+@@ -180,6 +189,9 @@
+ endfunc
+ 
+ func Test_uncrypt_xchacha20_3_persistent_undo()
++  if system("uname -m") == "ppc64le\n"
++    throw 'Skipped: not enough memory on ppc64le'
++  endif
+   CheckFeature sodium
+   CheckFeature persistent_undo
+ 
