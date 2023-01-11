@@ -1,3 +1,20 @@
+vim (2:8.2.3995-1ubuntu2.3) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: illegal memory access with bracketed paste in Ex mode
+    - debian/patches/CVE-2022-0392.patch: reverse space for the trailing NUL
+    - CVE-2022-0392
+  * SECURITY UPDATE: retab may cause illegal memory access
+    - debian/patches/CVE-2022-0417.patch: limit the value of tabstop
+    - CVE-2022-0417
+
+ -- Mark Esler <mark.esler@canonical.com>  Wed, 11 Jan 2023 17:53:12 -0600
+
+vim (2:8.2.3995-1ubuntu2.2) jammy; urgency=medium
+
+  * Update supported Ubuntu and Debian codenames (LP: #1996087).
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 09 Nov 2022 18:04:20 +0100
+
 vim (2:8.2.3995-1ubuntu2.1) jammy-security; urgency=medium
 
   * SECURITY UPDATE: heap based buffer overflow in spelling suggestion

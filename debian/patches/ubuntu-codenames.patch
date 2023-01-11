@@ -1,0 +1,65 @@
+Description: Ensure the list of supported Ubuntu and Debian codenames are current
+Origin: upstream
+Last-Update: 2022-11-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/runtime/syntax/debchangelog.vim
++++ b/runtime/syntax/debchangelog.vim
+@@ -20,22 +20,22 @@ let s:binNMU='binary-only=yes'
+ let s:cpo = &cpo
+ set cpo-=C
+ let s:supported = [
+-      \ 'oldstable', 'stable', 'testing', 'unstable', 'experimental',
+-      \ 'jessie', 'stretch', 'buster', 'bullseye', 'bookworm',
+-      \ 'trixie', 'sid', 'rc-buggy',
++      \ 'oldstable', 'stable', 'testing', 'unstable', 'experimental', 'sid', 'rc-buggy',
++      \ 'buster', 'bullseye', 'bookworm', 'trixie',
+       \
+-      \ 'trusty', 'xenial', 'bionic', 'focal', 'hirsute', 'impish', 'jammy',
++      \ 'trusty', 'xenial', 'bionic', 'focal', 'jammy', 'kinetic', 'lunar',
+       \ 'devel'
+       \ ]
+ let s:unsupported = [
+       \ 'frozen', 'buzz', 'rex', 'bo', 'hamm', 'slink', 'potato',
+       \ 'woody', 'sarge', 'etch', 'lenny', 'squeeze', 'wheezy',
++      \ 'jessie', 'stretch',
+       \
+       \ 'warty', 'hoary', 'breezy', 'dapper', 'edgy', 'feisty',
+       \ 'gutsy', 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid',
+       \ 'maverick', 'natty', 'oneiric', 'precise', 'quantal', 'raring', 'saucy',
+       \ 'utopic', 'vivid', 'wily', 'yakkety', 'zesty', 'artful', 'cosmic',
+-      \ 'disco', 'eoan', 'groovy'
++      \ 'disco', 'eoan', 'hirsute', 'impish', 'groovy'
+       \ ]
+ let &cpo=s:cpo
+ 
+--- a/runtime/syntax/debsources.vim
++++ b/runtime/syntax/debsources.vim
+@@ -22,22 +22,22 @@ syn match debsourcesComment        /#.*/
+ let s:cpo = &cpo
+ set cpo-=C
+ let s:supported = [
+-      \ 'oldstable', 'stable', 'testing', 'unstable', 'experimental',
+-      \ 'jessie', 'stretch', 'buster', 'bullseye', 'bookworm',
+-      \ 'trixie', 'sid', 'rc-buggy',
++      \ 'oldstable', 'stable', 'testing', 'unstable', 'experimental', 'sid', 'rc-buggy',
++      \ 'buster', 'bullseye', 'bookworm', 'trixie',
+       \
+-      \ 'trusty', 'xenial', 'bionic', 'focal', 'hirsute', 'impish', 'jammy',
++      \ 'trusty', 'xenial', 'bionic', 'focal', 'jammy', 'kinetic', 'lunar',
+       \ 'devel'
+       \ ]
+ let s:unsupported = [
+       \ 'buzz', 'rex', 'bo', 'hamm', 'slink', 'potato',
+       \ 'woody', 'sarge', 'etch', 'lenny', 'squeeze', 'wheezy',
++      \ 'jessie', 'stretch',
+       \
+       \ 'warty', 'hoary', 'breezy', 'dapper', 'edgy', 'feisty',
+       \ 'gutsy', 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid',
+       \ 'maverick', 'natty', 'oneiric', 'precise', 'quantal', 'raring', 'saucy',
+       \ 'utopic', 'vivid', 'wily', 'yakkety', 'zesty', 'artful', 'cosmic',
+-      \ 'disco', 'eoan', 'groovy'
++      \ 'disco', 'eoan', 'hirsute', 'impish', 'groovy'
+       \ ]
+ let &cpo=s:cpo
+ 
