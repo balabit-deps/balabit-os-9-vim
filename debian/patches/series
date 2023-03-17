@@ -19,3 +19,12 @@ remove_test_spell_single_word.patch
 ubuntu-codenames.patch
 CVE-2022-0392.patch
 CVE-2022-0417.patch
+CVE-2022-47024.patch
+CVE-2023-0049.patch
+CVE-2023-0051.patch
+CVE-2023-0054.patch
+CVE-2023-0288.patch
+CVE-2023-0433.patch
+CVE-2023-1170.patch
+CVE-2023-1175.patch
+CVE-2023-1264.patch

@@ -1,3 +1,44 @@
+vim (2:8.2.3995-1ubuntu2.4) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: NULL pointer dereference when creating blank mouse
+    pointer
+    - debian/patches/CVE-2022-47024.patch: only use the return value of
+      XChangeGC() when it is not NULL.
+    - CVE-2022-47024
+  * SECURITY UPDATE: invalid memory access with bad 'statusline' value 
+    - debian/patches/CVE-2023-0049.patch: avoid going over the NULL at the end
+      of a statusline.
+    - CVE-2023-0049
+  * SECURITY UPDATE: invalid memory access with recursive substitute
+    expression 
+    - debian/patches/CVE-2023-0054.patch: check the return value of
+      vim_regsub().
+    - CVE-2023-0054
+  * SECURITY UPDATE: invalid memory access with folding and using "L" 
+    - debian/patches/CVE-2023-0288.patch: prevent the cursor from moving to
+      line zero.
+    - CVE-2023-0288
+  * SECURITY UPDATE: reading past the end of a line when formatting text 
+    - debian/patches/CVE-2023-0433.patch: check for not going over the end of
+      the line.
+    - CVE-2023-0433
+  * SECURITY UPDATE: heap based buffer overflow vulnerability
+    - debian/patches/CVE-2023-0051.patch: reading beyond text 
+    - debian/patches/CVE-2023-1170.patch: accessing invalid memory with put
+      in Visual block mode
+    - CVE-2023-0051
+    - CVE-2023-1170
+  * SECURITY UPDATE: incorrect calculation of buffer size
+    - debian/patches/CVE-2023-1175.patch: illegal memory access when using
+      virtual editing
+    - CVE-2023-1175
+  * SECURITY UPDATE: NULL pointer dereference vulnerability
+    - debian/patches/CVE-2023-1264.patch: using NULL pointer with nested
+      :open command
+    - CVE-2023-1264
+
+ -- Nishit Majithia <nishit.majithia@canonical.com>  Fri, 17 Mar 2023 17:28:30 +0530
+
 vim (2:8.2.3995-1ubuntu2.3) jammy-security; urgency=medium
 
   * SECURITY UPDATE: illegal memory access with bracketed paste in Ex mode
