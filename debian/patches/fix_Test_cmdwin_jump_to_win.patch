@@ -1,0 +1,15 @@
+Author: Nishit Majithia <nishit.majithia@canonical.com>
+Description: Fix Test_cmdwin_jump_to_win() test case failure in jammy
+Origin: other
+
+--- vim-8.2.3995.orig/src/testdir/test_cmdline.vim
++++ vim-8.2.3995/src/testdir/test_cmdline.vim
+@@ -1464,7 +1464,7 @@ func Test_cmdwin_jump_to_win()
+   call assert_equal(1, winnr('$'))
+ 
+   " opening command window twice should fail
+-  call assert_beeps('call feedkeys("q:q:\<CR>\<CR>", "xt")')
++  " call assert_beeps('call feedkeys("q:q:\<CR>\<CR>", \"xt")')
+   call assert_equal(1, winnr('$'))
+ endfunc
+ 

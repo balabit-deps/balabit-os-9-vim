@@ -1,3 +1,125 @@
+vim (2:8.2.3995-1ubuntu2.5) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: use after free
+    - debian/patches/CVE-2022-0413.patch: make a copy of the substitute pattern
+      that starts with "\=" in do_sub() in src/ex_cmds.c and free it at the end
+      of the method and add test case Test_using_old_sub in
+      src/testdir/test_CVE.vim.
+    - debian/patches/CVE-2022-1796.patch: make a copy of the pattern to search
+      for as it could get freed in do_window() in src/window.c and add test
+      case Test_define_search in src/testdir/test_CVE.vim.
+    - debian/patches/CVE-2022-1898.patch: make a copy of the string as it could
+      get freed in nv_brackets() in src/normal.c, and add a test inside the
+      Test_define_search test case in src/testdir/test_CVE.vim.
+    - debian/patches/CVE-2022-1968.patch: mitigates the potential for a use
+      after free scenario by making a copy of a buffer to use for future
+      reference
+    - debian/patches/CVE-2022-2946.patch: using freed memory when 'tagfunc'
+      deletes the buffer
+    - CVE-2022-0413
+    - CVE-2022-1796
+    - CVE-2022-1898
+    - CVE-2022-1968
+    - CVE-2022-2946
+  * SECURITY UPDATE: buffer over-read
+    - debian/patches/CVE-2022-1629.patch: add a check for null after a
+      backslash in find_next_quote() in src/search.c and add test case
+      Test_string_html_objects in src/testdir/test_CVE.vim.
+    - debian/patches/CVE-2022-1720.patch: reading past end of line with "gf" in
+      Visual block mode
+    - debian/patches/CVE-2022-1733.patch: add a check for null when checking
+      for trailing ' in skip_string() in src/misc1.c and add test case
+      Test_cindent_check_funcdecl in src/testdir/test_CVE.vim.
+    - debian/patches/CVE-2022-1735.patch: add a new function, check_visual_pos
+      in src/misc2.c and invoke it in src/change.c and src/edit.c. Add the new
+      function header in src/proto/misc2.pro and add test case
+      Test_visual_block_with_substitute in src/testdir/test_visual.vim.
+    - debian/patches/CVE-2022-1851.patch: add a call to check_cursor() after
+      formatting in op_format() in src/ops.c and add test case
+      Test_correct_cursor_position in src/testdir/test_CVE.vim.
+    - debian/patches/CVE-2022-1927.patch: cursor position may be invalid after
+      "0;" range
+    - debian/patches/CVE-2022-2845.patch: reading before the start of the line
+    - CVE-2022-1629
+    - CVE-2022-1720
+    - CVE-2022-1733
+    - CVE-2022-1735
+    - CVE-2022-1851
+    - CVE-2022-1927
+    - CVE-2022-2845
+  * SECURITY UPDATE: crash when matching buffer with invalid pattern
+    - debian/patches/CVE-2022-1674.patch: check for NULL regprog
+    - CVE-2022-1674
+  * SECURITY UPDATE: buffer over-write
+    - debian/patches/CVE-2022-1785.patch: add textlock flag to disallow
+      changing text or switching window before calling vim_regsub_multi() in
+      src/ex_cmds.c.
+    - CVE-2022-1785
+  * SECURITY UPDATE: heap-based buffer overflow
+    - debian/patches/CVE-2022-1942.patch: adds a control to disallow the
+      opening of a command line window when text or buffer is locked.
+    - debian/patches/CVE-2022-2344.patch: reading past end of completion with
+      duplicate match
+    - debian/patches/CVE-2022-2571.patch: reading past end of line with insert
+      mode completion
+    - debian/patches/CVE-2022-2849.patch: invalid memory access with for loop
+      over NULL string
+    - CVE-2022-1942
+    - CVE-2022-2344
+    - CVE-2022-2571
+    - CVE-2022-2849
+  * SECURITY UPDATE: searching for quotes may go over the end of the line
+    - debian/patches/CVE-2022-2124.patch: check for running into the NULL
+    - CVE-2022-2124
+  * SECURITY UPDATE: lisp indenting my run over the end of the line
+    - debian/patches/CVE-2022-2125.patch: check for NULL earlier
+    - CVE-2022-2125
+  * SECURITY UPDATE: using invalid index when looking for spell suggestions
+    - debian/patches/CVE-2022-2126.patch: do not decrement the index when it
+      is zero
+    - CVE-2022-2126
+  * SECURITY UPDATE: out-of-bounds write
+    - debian/patches/CVE-2022-2129.patch: prevents the editing of another file
+      when either curbuf_lock or textlock is set.
+    - CVE-2022-2129
+  * SECURITY UPDATE: invalid memory access when using an expression on the
+    command line
+    - debian/patches/CVE-2022-2175-1.patch: make sure the position does not
+      go negative
+    - debian/patches/CVE-2022-2175-2.patch: add missing #ifdef FEAT_EVAL
+    - debian/patches/fix_Test_cmdwin_jump_to_win.patch: fix
+      Test_cmdwin_jump_to_win() test case
+    - CVE-2022-2175
+  * SECURITY UPDATE: reading beyond the end of the line with lisp indenting
+    - debian/patches/CVE-2022-2183.patch: avoid going over the NUL at the end
+      of the line
+    - CVE-2022-2183
+  * SECURITY UPDATE: accessing invalid memory after changing terminal size
+    - debian/patches/CVE-2022-2206.patch: adjust cmdline_row and msg_row to
+      the value of Rows
+    - CVE-2022-2206
+  * SECURITY UPDATE: spell dump may go beyond end of an array
+    - debian/patches/CVE-2022-2304.patch: limit the word length
+    - CVE-2022-2304
+  * SECURITY UPDATE: using freed memory with recursive substitution
+    - debian/patches/CVE-2022-2345.patch: always make a copy of
+      reg_prev_sub
+    - CVE-2022-2345
+  * SECURITY UPDATE: illegal memory access when pattern starts with
+    illegal byte
+    - debian/patches/CVE-2022-2581.patch: do not match a character with an
+      illegal byte
+    - CVE-2022-2581
+  * SECURITY UPDATE: null pointer dereference issue
+    - debian/patches/CVE-2022-2923.patch: crash when using ":mkspell" with an
+      empty .dic file
+    - debian/patches/CVE-2022-2980.patch: crash with mouse click when not
+      initialized
+    - CVE-2022-2923
+    - CVE-2022-2980
+
+ -- Nishit Majithia <nishit.majithia@canonical.com>  Mon, 03 Apr 2023 13:15:49 +0530
+
 vim (2:8.2.3995-1ubuntu2.4) jammy-security; urgency=medium
 
   * SECURITY UPDATE: NULL pointer dereference when creating blank mouse
