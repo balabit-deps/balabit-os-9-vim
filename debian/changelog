@@ -1,3 +1,77 @@
+vim (2:8.2.3995-1ubuntu2.7) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: heap buffer overflow when processing long file names
+    - debian/patches/CVE-2022-0213.patch: check length when appending a space.
+    - CVE-2022-0213
+  * SECURITY UPDATE: heap-based buffer overflow when performing a block insert
+    - debian/patches/CVE-2022-0261.patch: handle invalid byte better. Fix
+      inserting the wrong text.
+    - debian/patches/CVE-2022-0318-1.patch: for block insert only use the
+      offset for correcting the length.
+    - debian/patches/CVE-2022-0318-2.patch: adjust the expected output for
+      utf8 block insert test.
+    - CVE-2022-0261
+    - CVE-2022-0318
+  * SECURITY UPDATE: out-of-bounds read when exchanging windows in visual mode
+    - debian/patches/CVE-2022-0319.patch: correct end of Visual area when
+      entering another buffer.
+    - CVE-2022-0319
+  * SECURITY UPDATE: stack pointer corruption when parsing too many brackets
+    in expression
+    - debian/patches/CVE-2022-0351.patch: limit recursion to 1000.
+    - CVE-2022-0351
+  * SECURITY UPDATE: illegal memory access when processing large indent in ex
+    mode
+    - debian/patches/CVE-2022-0359.patch: allocate enough memory.
+    - CVE-2022-0359
+  * SECURITY UPDATE: illegal memory access when copying lines in visual mode
+    - debian/patches/CVE-2022-0361.patch: adjust the Visual position after
+      copying lines.
+    - CVE-2022-0361
+  * SECURITY UPDATE: illegal memory access when undo makes visual area invalid
+    in visual mode
+    - debian/patches/CVE-2022-0368.patch: correct the Visual area after undo.
+    - CVE-2022-0368
+  * SECURITY UPDATE: stack corruption when looking for spelling suggestions
+    - debian/patches/CVE-2022-0408.patch: prevent the depth increased too
+      much. Add a five second time limit to finding suggestions.
+    - CVE-2022-0408
+  * SECURITY UPDATE: use of freed memory when managing buffers
+    - debian/patches/CVE-2022-0443.patch: do not use wiped out buffer.
+    - CVE-2022-0443
+  * SECURITY UPDATE: heap buffer overflow when processing vim buffers
+    - debian/patches/CVE-2022-0554.patch: when deleting the current buffer to
+      not pick a quickfix buffer as the new current buffer.
+    - CVE-2022-0554
+  * SECURITY UPDATE: heap buffer overflow when repeatedly using :retab
+    - debian/patches/CVE-2022-0572.patch: bail out when the line is getting
+      too long.
+    - CVE-2022-0572
+  * SECURITY UPDATE: stack buffer overflow vulnerability
+    - debian/patches/CVE-2022-0629.patch: crash when using many composing
+      characters in error message
+    - CVE-2022-0629
+  * SECURITY UPDATE: out-of-range pointer offset when using special multi-byte
+    character
+    - debian/patches/CVE-2022-0685.patch: don't use isalpha() for an arbitrary
+      character.
+    - CVE-2022-0685
+  * SECURITY UPDATE: heap buffer overflow when processing anomalous
+    'vartabstop' value
+    - debian/patches/CVE-2022-0714.patch: check for running into the end of
+      the line.
+    - CVE-2022-0714
+  * SECURITY UPDATE: out-of-range pointer offset when processing specific
+    regexp pattern and string
+    - debian/patches/CVE-2022-0729.patch: stop at the start of the string.
+    - CVE-2022-0729
+  * SECURITY UPDATE: heap-based buffer overflow
+    - debian/patches/CVE-2022-2207.patch: adds a check to see if the cursor
+      column is great than zero.
+    - CVE-2022-2207
+
+ -- Nishit Majithia <nishit.majithia@canonical.com>  Tue, 18 Apr 2023 17:10:57 +0530
+
 vim (2:8.2.3995-1ubuntu2.5) jammy-security; urgency=medium
 
   * SECURITY UPDATE: use after free
