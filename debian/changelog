@@ -1,3 +1,19 @@
+vim (2:8.2.3995-1ubuntu2.8) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: use of out-of-range pointer offset when fuzzy matching
+    - debian/patches/CVE-2023-2426.patch: initialize the arrays used to store
+      match positions.
+    - CVE-2023-2426
+  * SECURITY UPDATE: NULL pointer dereference when processing register content 
+    - debian/patches/CVE-2023-2609.patch: check "y_array" is not NULL.
+    - CVE-2023-2609
+  * SECURITY UPDATE: integer overflow and excessive memory consumption when
+    allocating memory for tilde processing in pattern
+    - debian/patches/CVE-2023-2610.patch: limit the text length to MAXCOL.
+    - CVE-2023-2610
+
+ -- Camila Camargo de Matos <camila.camargodematos@canonical.com>  Wed, 24 May 2023 11:27:53 -0300
+
 vim (2:8.2.3995-1ubuntu2.7) jammy-security; urgency=medium
 
   * SECURITY UPDATE: heap buffer overflow when processing long file names
