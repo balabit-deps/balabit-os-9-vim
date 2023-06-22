@@ -1,3 +1,38 @@
+vim (2:8.2.3995-1ubuntu2.9) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: out-of-bounds read when finding an ex command by name
+    - debian/patches/CVE-2022-0128.patch: check for the NUL byte first before
+      reading. 
+    - CVE-2022-0128
+  * SECURITY UPDATE: use of freed memory when managing line buffers
+    - debian/patches/CVE-2022-0156-1.patch: tracking and keeping individual
+      lines until the end before freeing.
+    - debian/patches/CVE-2022-0156-2.patch: use growing array for tracking
+      lines to free when executing instructions.
+    - CVE-2022-0156
+  * SECURITY UPDATE: heap-based buffer overflow when reading line containing
+    "$" on its own 
+    - debian/patches/CVE-2022-0158.patch: handle environment variable with
+      adjusted error reporting. 
+    - CVE-2022-0158
+  * SECURITY UPDATE: out-of-bounds read when recording and using select mode
+    - debian/patches/CVE-2022-0393.patch: check last recorded character exists
+      before deleting. 
+    - CVE-2022-0393
+  * SECURITY UPDATE: heap-based buffer overflow when performing a visual block
+    yank
+    - debian/patches/CVE-2022-0407.patch: check line boundary before reading
+      character.  
+    - CVE-2022-0407
+  * SECURITY UPDATE: NULL pointer dereference when switching tabpage in 
+    cmdline window
+    - debian/patches/CVE-2022-0696.patch: deny switching tabpage in cmdline
+      window.
+    - CVE-2022-0696
+
+
+ -- Evan Caville <evan.caville@canonical.com>  Thu, 22 Jun 2023 14:08:04 +1000
+
 vim (2:8.2.3995-1ubuntu2.8) jammy-security; urgency=medium
 
   * SECURITY UPDATE: use of out-of-range pointer offset when fuzzy matching
