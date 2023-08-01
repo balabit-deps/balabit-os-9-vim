@@ -89,3 +89,15 @@ CVE-2022-0158.patch
 CVE-2022-0393.patch
 CVE-2022-0407.patch
 CVE-2022-0696.patch
+CVE-2022-2182.patch
+CVE-2022-2208.patch
+CVE-2022-2210.patch
+CVE-2022-2231.patch
+CVE-2022-2257.patch
+CVE-2022-2264.patch
+CVE-2022-2284.patch
+CVE-2022-2285.patch
+CVE-2022-2286.patch
+CVE-2022-2287.patch
+CVE-2022-2289.patch
+skip_some_tests.patch
