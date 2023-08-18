@@ -1,3 +1,50 @@
+vim (2:8.2.3995-1ubuntu2.11) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: heap-based buffer overflow
+    - debian/patches/CVE-2022-2522.patch: Terminate string with NUL
+    - debian/patches/CVE-2022-2580.patch: Properly skip over <Key> form
+    - debian/patches/CVE-2022-2819.patch: Don't read past the end of the
+      line
+    - CVE-2022-2522
+    - CVE-2022-2580
+    - CVE-2022-2819
+  * SECURITY UPDATE: out-of-bounds write issue
+    - debian/patches/CVE-2022-2598.patch: Make sure the line number does
+      not go below one.
+    - CVE-2022-2598
+  * SECURITY UPDATE: out-of-bounds read issue
+    - debian/patches/CVE-2022-2816.patch: Don't read past the end of the
+      line
+    - CVE-2022-2816
+  * SECURITY UPDATE: use after free memory issue
+    - debian/patches/CVE-2022-2817.patch: Make a copy of the error
+    - debian/patches/CVE-2022-2862.patch: Mess up the variable name so that
+      it won't be found
+    - debian/patches/CVE-2022-2889.patch: Free eval_tofree later
+    - debian/patches/CVE-2022-2982.patch: Do not allow for recursion
+    - debian/patches/CVE-2022-3016.patch: Return QF_ABORT and handle it.
+    - debian/patches/CVE-2022-3037.patch: Do not handle errors if there
+      aren't any
+    - debian/patches/CVE-2022-3099.patch: Do not check breakpoint for
+      non-existing line
+    - debian/patches/CVE-2022-3134.patch: Bail out when the window was
+      closed
+    - CVE-2022-2817
+    - CVE-2022-2862
+    - CVE-2022-2889
+    - CVE-2022-2982
+    - CVE-2022-3016
+    - CVE-2022-3037
+    - CVE-2022-3099
+    - CVE-2022-3134
+  * SECURITY UPDATE: NULL pointer dereference
+    - debian/patches/CVE-2022-2874.patch: Check for skipping
+    - debian/patches/CVE-2022-3153.patch: Check for NULL string
+    - CVE-2022-2874
+    - CVE-2022-3153
+
+ -- Nishit Majithia <nishit.majithia@canonical.com>  Fri, 18 Aug 2023 09:42:26 +0530
+
 vim (2:8.2.3995-1ubuntu2.10) jammy-security; urgency=medium
 
   * SECURITY UPDATE: heap-based buffer overflow
