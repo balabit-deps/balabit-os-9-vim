@@ -1,3 +1,51 @@
+vim (2:8.2.3995-1ubuntu2.12) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: heap-based buffer overflow
+    - debian/patches/CVE-2022-3234.patch: Check for replacing NUL after Tab.
+    - debian/patches/CVE-2022-3491.patch: Do not return an invalid pointer.
+      Fix skipping redirection
+    - debian/patches/CVE-2022-3520.patch: Check that the column does not
+      become negative.
+    - CVE-2022-3234
+    - CVE-2022-3491
+    - CVE-2022-3520
+  * SECURITY UPDATE: use after free memory issue
+    - debian/patches/CVE-2022-3235.patch: Make sure pointer to b_p_iminsert
+      is still valid.
+    - debian/patches/CVE-2022-3256.patch: Copy the mark before editing
+      another buffer
+    - debian/patches/CVE-2022-3297.patch: Make a copy of the option. Make
+      sure cursor position is valid
+    - debian/patches/CVE-2022-3352.patch: Disallow deleting the current
+      buffer to avoid using freed memory
+    - debian/patches/CVE-2022-3591.patch: Disallow navigating to a dummy
+      buffer
+    - debian/patches/CVE-2022-3705.patch: Set the quickfix-busy flag while
+      filling the buffer
+    - debian/patches/CVE-2022-4292.patch: Bail out if the window no longer
+      exists.
+    - CVE-2022-3235
+    - CVE-2022-3256
+    - CVE-2022-3297
+    - CVE-2022-3352
+    - CVE-2022-3591
+    - CVE-2022-3705
+    - CVE-2022-4292
+  * SECURITY UPDATE: NULL pointer dereference
+    - debian/patches/CVE-2022-3278.patch: Don't get a next line when
+      skipping over NL
+    - CVE-2022-3278
+  * SECURITY UPDATE: stack-based buffer overflow
+    - debian/patches/CVE-2022-3324.patch: Make sure the window width does
+      not become negative
+    - CVE-2022-3324
+  * SECURITY UPDATE: incorrect floating point comparison
+    - debian/patches/CVE-2022-4293.patch: fix floating point comparison
+    - CVE-2022-4293
+  * debian/patches/fix_flaky_tests.patch: fix some flaky tests
+
+ -- Nishit Majithia <nishit.majithia@canonical.com>  Fri, 06 Oct 2023 13:19:43 +0530
+
 vim (2:8.2.3995-1ubuntu2.11) jammy-security; urgency=medium
 
   * SECURITY UPDATE: heap-based buffer overflow
