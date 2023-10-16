@@ -1,3 +1,48 @@
+vim (2:8.2.3995-1ubuntu2.13) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-4733.patch: Verify oldwin pointer after
+      reset_VIsual() in do_ecmd.
+    - CVE-2023-4733
+  * SECURITY UPDATE: integer overflow vulnerability
+    - debian/patches/CVE-2023-4734.patch: Check for typeval correctly in
+      f_fullcommand.
+    - CVE-2023-4734
+  * SECURITY UPDATE: out of bounds write vulnerability
+    - debian/patches/CVE-2023-4735.patch: Add check for buffer size to avoid
+      overflow in do_addsub.
+    - CVE-2023-4735
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-4750.patch: Check buffer is valid before
+      accessing it.
+    - CVE-2023-4750
+  * SECURITY UPDATE: heap based buffer overflow vulnerability
+    - debian/patches/CVE-2023-4751.patch: Stop Visual mode when using :ball
+      to avoid illegal memory access.
+    - CVE-2023-4751
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-4752.patch: validate buffer before accessing it
+      in ins_compl_get_exp.
+    - CVE-2023-4752
+  * SECURITY UPDATE: heap based buffer overflow vulnerability
+    - debian/patches/CVE-2023-4781.patch: Disallow exchanging windows when
+      textlock is active in vim_regsub_both.
+    - CVE-2023-4781
+  * SECURITY UPDATE: heap based buffer overflow vulnerability
+    - debian/patches/CVE-2023-5344.patch: Add NULL at end of buffer in
+      trunc_string.
+    - CVE-2023-5344
+  * SECURITY UPDATE: NULL pointer dereference
+    - debian/patches/CVE-2023-5441.patch: skip gui_scroll when exmode_active
+      in gui_do_scroll.
+    - CVE-2023-5441
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-5535.patch: block autocommands in
+      buf_contents_changed.
+    - CVE-2023-5535
+
+ -- Fabian Toepfer <fabian.toepfer@canonical.com>  Mon, 16 Oct 2023 20:15:38 +0200
+
 vim (2:8.2.3995-1ubuntu2.12) jammy-security; urgency=medium
 
   * SECURITY UPDATE: heap-based buffer overflow

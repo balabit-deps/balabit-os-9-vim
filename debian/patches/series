@@ -130,3 +130,13 @@ CVE-2022-3705.patch
 CVE-2022-4293.patch
 CVE-2022-4292.patch
 fix_flaky_tests.patch
+CVE-2023-4733.patch
+CVE-2023-4734.patch
+CVE-2023-4735.patch
+CVE-2023-4750.patch
+CVE-2023-4751.patch
+CVE-2023-4752.patch
+CVE-2023-4781.patch
+CVE-2023-5344.patch
+CVE-2023-5441.patch
+CVE-2023-5535.patch
