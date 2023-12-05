@@ -1,3 +1,70 @@
+vim (2:8.2.3995-1ubuntu2.15) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: NULL pointer dereference
+    - debian/patches/CVE-2022-1725.patch: Check for regexp program becoming NULL
+      in more places.
+    - CVE-2022-1725
+  * SECURITY UPDATE: denial of service
+    - debian/patches/CVE-2022-1771.patch: Limit recursion of getcmdline().
+    - CVE-2022-1771
+  * SECURITY UPDATE: heap based buffer overflow vulnerability
+    - debian/patches/CVE-2022-1886.patch: Check the length is more than zero.
+    - CVE-2022-1886
+  * SECURITY UPDATE: out of bounds write vulnerability
+    - debian/patches/CVE-2022-1897.patch: Disallow undo when in a substitute
+      command.
+    - CVE-2022-1897
+  * SECURITY UPDATE: out-of-bounds write
+    - debian/patches/CVE-2022-2000.patch: addresses the potential for an
+      overflow by adding a bounds check and truncating the message if needed.
+    - CVE-2022-2000
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2022-2042.patch: Initialize "attr". Check for empty
+      line early.
+    - CVE-2022-2042
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-46246.patch: Check that the return value from the
+      vim_str2nr() function is not larger than INT_MAX and if yes, bail out with
+      an error.
+    - CVE-2023-46246
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-48231.patch: If the current window structure is
+      no longer valid, fail and return before attempting to set win->w_closing
+      variable.
+    - CVE-2023-48231
+  * SECURITY UPDATE: integer overflow
+    - debian/patches/CVE-2023-48233.patch: If the count after the :s command is
+      larger than what fits into a (signed) long variable, abort with
+      e_value_too_large.
+    - CVE-2023-48233
+  * SECURITY UPDATE: integer overflow
+    - debian/patches/CVE-2023-48234.patch: When getting the count for a normal z
+      command, it may overflow for large counts given. So verify, that we can
+      safely store the result in a long.
+    - CVE-2023-48234
+  * SECURITY UPDATE: integer overflow
+    - debian/patches/CVE-2023-48235.patch: When parsing relative ex addresses
+      one may unintentionally cause an overflow (because LONG_MAX - lnum will
+      overflow for negative addresses).
+    - CVE-2023-48235
+  * SECURITY UPDATE: integer overflow
+    - debian/patches/CVE-2023-48236.patch: When using the z= command, we may
+      overflow the count with values larger than MAX_INT. So verify that we do
+      not overflow and in case when an overflow is detected, simply return 0.
+    - CVE-2023-48236
+  * SECURITY UPDATE: integer overflow
+    - debian/patches/CVE-2023-48237.patch: When shifting lines in operator
+      pending mode and using a very large value, we may overflow the size of
+      integer. Fix this by using a long variable, testing if the result would
+      be larger than INT_MAX and if so, indent by INT_MAX value.
+    - CVE-2023-48237
+  * SECURITY UPDATE: use-after-free vulnerability
+    - debian/patches/CVE-2023-48706.patch: ensure that the sub var always using
+      allocated memory.
+    - CVE-2023-48706
+
+ -- Fabian Toepfer <fabian.toepfer@canonical.com>  Tue, 05 Dec 2023 18:58:57 +0100
+
 vim (2:8.2.3995-1ubuntu2.13) jammy-security; urgency=medium
 
   * SECURITY UPDATE: use-after-free vulnerability
