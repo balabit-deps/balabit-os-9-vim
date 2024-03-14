@@ -154,3 +154,5 @@ CVE-2023-48235.patch
 CVE-2023-48236.patch
 CVE-2023-48237.patch
 CVE-2023-48706.patch
+CVE-2024-22667.patch
+remove-flaky-matchfuzzy-test.patch

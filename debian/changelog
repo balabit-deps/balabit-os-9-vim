@@ -1,3 +1,15 @@
+vim (2:8.2.3995-1ubuntu2.16) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: stack based buffer overflow
+    - debian/patches/CVE-2024-22667.patch: passes error buffer length down
+      through option callback functions.
+    - debian/patches/remove-flaky-matchfuzzy-test.patch: removing flaky test
+      initially introduced in d/p/CVE-2023-2426.patch due to long run time
+      causing the test and builds to fail.
+    - CVE-2024-22667
+
+ -- Ian Constantin <ian.constantin@canonical.com>  Thu, 14 Mar 2024 11:05:11 +0200
+
 vim (2:8.2.3995-1ubuntu2.15) jammy-security; urgency=medium
 
   * SECURITY UPDATE: NULL pointer dereference
