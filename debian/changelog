@@ -1,3 +1,16 @@
+vim (2:8.2.3995-1ubuntu2.18) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: use after free
+    - debian/patches/CVE-2024-41957.patch: set tagname to NULL
+      after being freed
+    - CVE-2024-41957
+  * SECURITY UPDATE: use after free
+    - debian/patches/CVE-2024-43374.patch: add lock to keep
+      reference valid
+    - CVE-2024-43374
+
+ -- Bruce Cable <bruce.cable@canonical.com>  Tue, 27 Aug 2024 15:34:22 +1000
+
 vim (2:8.2.3995-1ubuntu2.17) jammy; urgency=medium
 
   * Ensure Ubuntu codenames are current (LP: #2064687).
