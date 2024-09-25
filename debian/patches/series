@@ -158,3 +158,4 @@ remove-flaky-matchfuzzy-test.patch
 ubuntu-codenames.patch
 CVE-2024-41957.patch
 CVE-2024-43374.patch
+CVE-2024-43802.patch

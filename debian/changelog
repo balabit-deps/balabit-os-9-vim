@@ -1,3 +1,12 @@
+vim (2:8.2.3995-1ubuntu2.19) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: buffer overflow
+    - debian/patches/CVE-2024-43802.patch: check buflen before advancing
+      offset.
+    - CVE-2024-43802
+
+ -- Vyom Yadav <vyom.yadav@canonical.com>  Wed, 25 Sep 2024 11:00:01 +0530
+
 vim (2:8.2.3995-1ubuntu2.18) jammy-security; urgency=medium
 
   * SECURITY UPDATE: use after free
