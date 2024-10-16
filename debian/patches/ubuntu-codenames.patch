@@ -1,11 +1,11 @@
 Description: Ensure the list of supported Ubuntu and Debian codenames are current
 Origin: upstream
-Last-Update: 2024-05-02
+Last-Update: 2024-10-16
 ---
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- a/runtime/syntax/debchangelog.vim
 +++ b/runtime/syntax/debchangelog.vim
-@@ -20,22 +20,22 @@ let s:binNMU='binary-only=yes'
+@@ -20,22 +20,23 @@ let s:binNMU='binary-only=yes'
  let s:cpo = &cpo
  set cpo-=C
  let s:supported = [
@@ -16,7 +16,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 +      \ 'bullseye', 'bookworm', 'trixie', 'forky',
        \
 -      \ 'trusty', 'xenial', 'bionic', 'focal', 'hirsute', 'impish', 'jammy',
-+      \ 'trusty', 'xenial', 'bionic', 'focal', 'jammy', 'mantic', 'noble', 'oracular',
++      \ 'focal', 'jammy', 'noble', 'oracular', 'plucky',
        \ 'devel'
        \ ]
  let s:unsupported = [
@@ -28,15 +28,17 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
        \ 'warty', 'hoary', 'breezy', 'dapper', 'edgy', 'feisty',
        \ 'gutsy', 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid',
        \ 'maverick', 'natty', 'oneiric', 'precise', 'quantal', 'raring', 'saucy',
-       \ 'utopic', 'vivid', 'wily', 'yakkety', 'zesty', 'artful', 'cosmic',
+-      \ 'utopic', 'vivid', 'wily', 'yakkety', 'zesty', 'artful', 'cosmic',
 -      \ 'disco', 'eoan', 'groovy'
-+      \ 'disco', 'eoan', 'hirsute', 'impish', 'kinetic', 'lunar', 'groovy'
++      \ 'trusty', 'utopic', 'vivid', 'wily', 'xenial', 'yakkety', 'zesty',
++      \ 'artful', 'bionic', 'cosmic', 'disco', 'eoan', 'hirsute',
++      \ 'impish', 'kinetic', 'lunar', 'groovy', 'mantic'
        \ ]
  let &cpo=s:cpo
  
 --- a/runtime/syntax/debsources.vim
 +++ b/runtime/syntax/debsources.vim
-@@ -22,22 +22,22 @@ syn match debsourcesComment        /#.*/
+@@ -22,22 +22,23 @@ syn match debsourcesComment        /#.*/
  let s:cpo = &cpo
  set cpo-=C
  let s:supported = [
@@ -47,7 +49,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 +      \ 'bullseye', 'bookworm', 'trixie', 'forky',
        \
 -      \ 'trusty', 'xenial', 'bionic', 'focal', 'hirsute', 'impish', 'jammy',
-+      \ 'trusty', 'xenial', 'bionic', 'focal', 'jammy', 'mantic', 'noble', 'oracular',
++      \ 'focal', 'jammy', 'noble', 'oracular', 'plucky',
        \ 'devel'
        \ ]
  let s:unsupported = [
@@ -58,9 +60,11 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
        \ 'warty', 'hoary', 'breezy', 'dapper', 'edgy', 'feisty',
        \ 'gutsy', 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid',
        \ 'maverick', 'natty', 'oneiric', 'precise', 'quantal', 'raring', 'saucy',
-       \ 'utopic', 'vivid', 'wily', 'yakkety', 'zesty', 'artful', 'cosmic',
+-      \ 'utopic', 'vivid', 'wily', 'yakkety', 'zesty', 'artful', 'cosmic',
 -      \ 'disco', 'eoan', 'groovy'
-+      \ 'disco', 'eoan', 'hirsute', 'impish', 'kinetic', 'lunar', 'groovy'
++      \ 'trusty', 'utopic', 'vivid', 'wily', 'xenial', 'yakkety', 'zesty',
++      \ 'artful', 'bionic', 'cosmic', 'disco', 'eoan', 'hirsute',
++      \ 'impish', 'kinetic', 'lunar', 'groovy', 'mantic'
        \ ]
  let &cpo=s:cpo
  

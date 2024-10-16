@@ -1,3 +1,9 @@
+vim (2:8.2.3995-1ubuntu2.20) jammy; urgency=medium
+
+  * Ensure Ubuntu codenames are current (LP: #2084706).
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 16 Oct 2024 12:27:14 -0500
+
 vim (2:8.2.3995-1ubuntu2.19) jammy-security; urgency=medium
 
   * SECURITY UPDATE: buffer overflow
