@@ -1,3 +1,13 @@
+vim (2:8.2.3995-1ubuntu2.21) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Use after free when closing a buffer.
+    - debian/patches/CVE-2024-47814.patch: Add buf_locked() in src/buffer.c.
+      Abort autocommands editing a file when buf_locked() in src/ex_cmds.c.
+      Add buf_locked() in src/proto/buffer.pro.
+    - CVE-2024-47814
+
+ -- Hlib Korzhynskyy <hlib.korzhynskyy@canonical.com>  Thu, 07 Nov 2024 09:47:21 -0330
+
 vim (2:8.2.3995-1ubuntu2.20) jammy; urgency=medium
 
   * Ensure Ubuntu codenames are current (LP: #2084706).
