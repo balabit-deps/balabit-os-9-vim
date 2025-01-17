@@ -1,3 +1,12 @@
+vim (2:8.2.3995-1ubuntu2.22) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Heap-buffer-overflow when switching buffers.
+    - debian/patches/CVE-2025-22134.patch: Add reset_VIsual_and_resel() to
+      src/arglist.c. Add ptrlen checks in src/misc1.c and src/ops.c.
+    - CVE-2025-22134
+
+ -- Hlib Korzhynskyy <hlib.korzhynskyy@canonical.com>  Fri, 17 Jan 2025 12:55:02 -0330
+
 vim (2:8.2.3995-1ubuntu2.21) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Use after free when closing a buffer.
