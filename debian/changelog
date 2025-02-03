@@ -1,3 +1,13 @@
+vim (2:8.2.3995-1ubuntu2.23) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Denial of service
+    - debian/patches/CVE-2025-24014.patch: fix a segfault in win_line()
+      in files src/gui.c, src/testdir/crash/ex_redraw_crash,
+      src/testdir/test_crash.vim.
+    - CVE-2025-24014
+
+ -- Leonidas Da Silva Barbosa <leo.barbosa@canonical.com>  Mon, 03 Feb 2025 08:54:38 -0300
+
 vim (2:8.2.3995-1ubuntu2.22) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Heap-buffer-overflow when switching buffers.
