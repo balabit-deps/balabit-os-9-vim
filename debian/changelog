@@ -1,3 +1,13 @@
+vim (2:8.2.3995-1ubuntu2.24) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Use after free when redirecting display command to
+    register.
+    - debian/patches/CVE-2025-26603.patch: Change redir_reg check to use
+      vim_strchr command check in ./src/register.c.
+    - CVE-2025-26603
+
+ -- Hlib Korzhynskyy <hlib.korzhynskyy@canonical.com>  Wed, 02 Apr 2025 10:09:01 -0230
+
 vim (2:8.2.3995-1ubuntu2.23) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Denial of service
