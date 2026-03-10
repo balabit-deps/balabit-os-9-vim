@@ -1,3 +1,42 @@
+vim (2:8.2.3995-1ubuntu2.26) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Buffer Overflow
+    - debian/patches/CVE-2026-26269.patch: Limit writing to max KEYBUFLEN
+      bytes to prevent writing out of bounds.
+    - debian/patches/CVE-2026-28420.patch: Use VTERM_MAX_CHARS_PER_CELL * 4
+      for ga_grow() to ensure sufficient space. Add a boundary check to the
+      character loop to prevent index out-of-bounds access.
+    - debian/patches/CVE-2026-28422.patch: Update the size check to account
+      for the byte length of the fill character (using MB_CHAR2LEN).
+    - debian/patches/CVE-2026-25749.patch: Limit strncpy to the length
+      of the buffer (MAXPATHL)
+    - CVE-2026-26269
+    - CVE-2026-28420
+    - CVE-2026-28422
+    - CVE-2026-25749
+  * SECURITY UPDATE: Command Injection
+    - debian/patches/CVE-2026-28417.patch: Implement stricter RFC1123
+      hostname and IP validation. Use shellescape() for the provided
+      hostname and port.
+    - CVE-2026-28417
+  * SECURITY UPDATE: Out of Bounds Read
+    - debian/patches/CVE-2026-28418.patch: Check for end of buffer
+      and return early.
+    - CVE-2026-28418
+  * SECURITY UPDATE: Buffer Underflow
+    - debian/patches/CVE-2026-28419.patch: Add a check to ensure the
+      delimiter (p_7f) is not at the start of the buffer (lbuf) before
+      attempting to isolate the tag name.
+    - CVE-2026-28419
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-28421.patch: Add bounds checks on
+      pe_page_count and pe_bnum against mf_blocknr_max before descending
+      into the block tree, and validate pe_old_lnum >= 1 and
+      pe_line_count > 0 before calling readfile().
+    - CVE-2026-28421
+
+ -- Bruce Cable <bruce.cable@canonical.com>  Wed, 11 Mar 2026 10:44:44 +1100
+
 vim (2:8.2.3995-1ubuntu2.24) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Use after free when redirecting display command to
