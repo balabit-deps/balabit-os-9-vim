@@ -1,3 +1,16 @@
+vim (2:8.2.3995-1ubuntu2.27) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Command injection in glob.
+    - debian/patches/CVE-2026-33412.patch: Add newline to SHELL_SPECIAL in
+      src/os_unix.c.
+    - CVE-2026-33412
+  * SECURITY UPDATE: Security bypass in modeline.
+    - debian/patches/CVE-2026-34982.patch: Disallow modeset while in secure
+       mode in src/optiondefs.h.
+    - CVE-2026-34982
+
+ -- Kyle Kernick <kyle.kernick@canonical.com>  Mon, 06 Apr 2026 14:13:36 -0600
+
 vim (2:8.2.3995-1ubuntu2.26) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Buffer Overflow
