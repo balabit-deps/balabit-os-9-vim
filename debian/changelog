@@ -1,3 +1,12 @@
+vim (2:8.2.3995-1ubuntu2.28) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Command Injection in netbeans
+    - debian/patches/CVE-2026-39881.patch: Validate typename, fg, and bg
+      before passing to coloncmd in src/netbeans.c
+    - CVE-2026-39881
+
+ -- Kyle Kernick <kyle.kernick@canonical.com>  Wed, 22 Apr 2026 12:21:19 -0600
+
 vim (2:8.2.3995-1ubuntu2.27) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Command injection in glob.
