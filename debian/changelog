@@ -1,3 +1,12 @@
+vim (2:8.2.3995-1ubuntu2.29) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Command injection via backtick expansion in tag files
+    - debian/patches/CVE-2026-41411.patch: Disallow backticks before attempting
+      to expand filenames
+    - CVE-2026-41411
+
+ -- Federico Quattrin <federico.quattrin@canonical.com>  Wed, 06 May 2026 13:56:18 -0300
+
 vim (2:8.2.3995-1ubuntu2.28) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Command Injection in netbeans
