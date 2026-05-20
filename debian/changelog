@@ -1,3 +1,20 @@
+vim (2:8.2.3995-1ubuntu2.30) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Command injection in netrw plugin.
+    - debian/patches/CVE-2026-42307.patch: Escape file names and harden regex
+      patterns in runtime/autoload/netrw.vim
+    - CVE-2026-42307
+  * SECURITY UPDATE: Shell execution in completion.
+    - debian/patches/CVE-2026-44656.patch: Skip path entries containing
+      backticks and add P_SECURE option in src/findfile.c and src/optiondefs.h
+    - CVE-2026-44656
+  * SECURITY UPDATE: Heap overflow in spellfile.
+    - debian/patches/CVE-2026-45130.patch: Enforce a maximum compound length
+      in src/spellfile.c
+    - CVE-2026-45130
+
+ -- Kyle Kernick <kyle.kernick@canonical.com>  Wed, 20 May 2026 15:28:11 -0600
+
 vim (2:8.2.3995-1ubuntu2.29) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Command injection via backtick expansion in tag files
@@ -9905,4 +9922,3 @@ vim (4.4-1) unstable; urgency=low
     it won't hurt if it isn't.)
 
  -- Stuart Lamble <lamble@yoyo.cc.monash.edu.au>  Sun, 22 Sep 1996 17:38:15 +1000
-
