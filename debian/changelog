@@ -1,3 +1,16 @@
+vim (2:8.2.3995-1ubuntu2.31) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Command injection in tar plugin.
+    - debian/patches/CVE-2026-46483.patch: Use the correct shell-escape in
+      runtime/autoload/tar.vim.
+    - CVE-2026-46483
+  * SECURITY UPDATE: Code injection via mf command.
+    - debian/patches/CVE-2026-43961.patch: Avoid string concatenation for
+      filter commands in runtime/autoload/netrw.vim.
+    - CVE-2026-43961
+
+ -- Kyle Kernick <kyle.kernick@canonical.com>  Wed, 03 Jun 2026 10:41:25 -0600
+
 vim (2:8.2.3995-1ubuntu2.30) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Command injection in netrw plugin.
