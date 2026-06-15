@@ -1,3 +1,29 @@
+vim (2:8.2.3995-1ubuntu2.32) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Code injection via NetrwBookHistSave().
+    - debian/patches/CVE-2026-47162.patch: Properly quote the directory name
+      in runtime/autoload/netrw.vim.
+    - CVE-2026-47162
+  * SECURITY UPDATE: Code Injection in cucumber filetype plugin.
+    - debian/patches/CVE-2026-47167.patch: Use rubys Regexp.new() in
+      runtime/ftplugin/cucumber.vim.
+    - CVE-2026-47167
+  * SECURITY UPDATE: Code execution with python3complete.
+    - debian/patches/CVE-2026-52858.patch: Disable execution of import/from
+      statements in runtime/autoload/python3complete.vim and
+      ../pythoncomplete.vim
+    - debian/patches/CVE-2026-52860.patch: Strip default expressions and
+      annotations in runtime/autoload/python3complete.vim and
+      ../pythoncomplete.vim
+    - CVE-2026-52858
+    - CVE-2026-52860
+  * SECURITY UPDATE: Out-of-bounds read in update_snapshot().
+    - debian/patches/CVE-2026-52859.patch: Bound loop in handle_pushline() in
+      src/terminal.c.
+    - CVE-2026-52859
+
+ -- Kyle Kernick <kyle.kernick@canonical.com>  Mon, 15 Jun 2026 16:18:48 -0600
+
 vim (2:8.2.3995-1ubuntu2.31) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Command injection in tar plugin.
