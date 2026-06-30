@@ -1,3 +1,35 @@
+vim (2:8.2.3995-1ubuntu2.33) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Path Traversal in zip.vim
+    - debian/patches/CVE-2026-35177.patch: Detect malicious zip files before
+      writing in runtime/autoload/zip.vim
+    - CVE-2026-35177
+  * SECURITY UPDATE: Out-of-bounds write.
+    - debian/patches/CVE-2026-55693.patch: only descend while
+      depth < MAXWLEN - 1 in src/spellfile.c.
+    - debian/patches/CVE-2026-55892.patch: only descend while
+      depth < MAXWLEN - 1 in src/spell.c.
+    - CVE-2026-55693
+    - CVE-2026-55892
+  * SECURITY UPDATE: Code injection in local file deletion.
+    - debian/patches/CVE-2026-55895.patch: Use fnameescape() to escape
+      file name in runtime/autoload/netrw.vim.
+    - CVE-2026-55895
+  * SECURITY UPDATE: Out-of-bounds read with sodium encrypted files.
+    - debian/patches/CVE-2026-57452.patch: Verify that there is enough space
+      before function call in src/crypt.c.
+    - CVE-2026-57452
+  * SECURITY UPDATE: Out-of-bounds write with soundfold().
+    - debian/patches/CVE-2026-57455.patch: Add an abort condition to validate
+      buffer in src/spell.c.
+    - CVE-2026-57455
+  * SECURITY UPDATE: Code execution with python complete.
+    - debian/patches/CVE-2026-57456.patch: Use repr() to quote the doc strings
+      in runtime/autoload/python3complete.vim and ../pythoncomplete.vim.
+    - CVE-2026-57456
+
+ -- Kyle Kernick <kyle.kernick@canonical.com>  Tue, 30 Jun 2026 11:46:22 -0600
+
 vim (2:8.2.3995-1ubuntu2.32) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Code injection via NetrwBookHistSave().
